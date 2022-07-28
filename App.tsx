@@ -1,14 +1,5 @@
 import * as React from "react";
-// import { StatusBar } from 'expo-status-bar';
-import {
-  StyleSheet,
-  Platform,
-  StatusBar,
-  Text,
-  SafeAreaView,
-} from "react-native";
-// import { useDimensions } from "@react-native-community/hooks";
-
+import { SafeAreaView } from "react-native";
 import {
   useFonts as useRaleway,
   Raleway_700Bold,
@@ -19,7 +10,6 @@ import {
   useFonts as useRoboto,
   Roboto_400Regular,
 } from "@expo-google-fonts/roboto";
-
 import globalStyles from "./app/config/globalStyles";
 import colors from "./app/config/colors";
 import HomeScreen from "./app/screens/HomeScreen";
@@ -39,7 +29,7 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={globalStyles.AndroidSaveArea}>
+    <SafeAreaView style={globalStyles.SaveArea}>
       <HomeScreen user="Twan" />
     </SafeAreaView>
   );
