@@ -11,21 +11,24 @@ import colors from "../config/colors";
 
 interface TextButtonProps {
   borderRadius: number;
+  style: TextStyle | TextStyle[];
 }
 
 interface Styles {
   buttonContainer: ViewStyle;
-  centerText: TextStyle;
 }
 
-const TextButton: FC<TextButtonProps> = ({ borderRadius, children }) => {
+const TextButton: FC<TextButtonProps> = ({ borderRadius, style, children }) => {
   return (
     <Pressable
-      style={[styles.buttonContainer, { borderRadius: borderRadius }]}
+      style={[
+        styles.buttonContainer,
+        { height: borderRadius * 2, borderRadius: borderRadius },
+      ]}
       onPress={() => alert("Pressed")}
     >
       <Text
-        style={[globalStyles.subTitle, styles.centerText]}
+        style={[globalStyles.subTitle, style]}
         adjustsFontSizeToFit={true}
         numberOfLines={1}
       >
@@ -40,8 +43,9 @@ export default TextButton;
 const styles = StyleSheet.create<Styles>({
   buttonContainer: {
     backgroundColor: colors.secondary,
+    justifyContent: "center",
   },
-  centerText: {
-    textAlign: "center",
-  },
+  // centerText: {
+  //   textAlign: "center",
+  // },
 });

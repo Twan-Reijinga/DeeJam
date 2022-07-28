@@ -14,8 +14,9 @@ import globalStyles from "../config/globalStyles";
 import colors from "../config/colors";
 import fontSizes from "../config/fontSizes";
 import TextButton from "./TextButton";
+import IconButton from "./IconButton";
 
-const borderRadius = responsiveWidth(5);
+const borderRadius = responsiveWidth(5) < 50 ? responsiveWidth(5) : 50;
 
 interface GroupCardProps {
   groupName: string;
@@ -28,6 +29,7 @@ interface Styles {
   overlay: ViewStyle;
   textContainer: ViewStyle;
   centerText: TextStyle;
+  textButton: TextStyle;
 }
 
 const GroupCard: FC<GroupCardProps> = ({ groupName, creatorName }) => {
@@ -65,7 +67,13 @@ const GroupCard: FC<GroupCardProps> = ({ groupName, creatorName }) => {
           {creatorName}
         </Text>
       </View>
-      <TextButton borderRadius={borderRadius}>Join</TextButton>
+      <TextButton
+        style={[styles.centerText, styles.textButton]}
+        borderRadius={borderRadius}
+      >
+        Join
+      </TextButton>
+      {/* <IconButton></IconButton> */}
     </View>
   );
 };
@@ -88,13 +96,17 @@ const styles = StyleSheet.create<Styles>({
   overlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0,0,0,0.5)",
-    borderRadius: responsiveWidth(5),
+    borderRadius: borderRadius,
   },
   textContainer: {
+    padding: 5,
     flex: 1,
     justifyContent: "center",
   },
   centerText: {
     textAlign: "center",
+  },
+  textButton: {
+    fontSize: fontSizes.small,
   },
 });
