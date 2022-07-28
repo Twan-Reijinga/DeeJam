@@ -65,7 +65,7 @@ const GroupCard: FC<GroupCardProps> = ({ groupName, creatorName }) => {
           {creatorName}
         </Text>
       </View>
-      <TextButton content="Join" borderRadius={borderRadius} />
+      <TextButton borderRadius={borderRadius}>Join</TextButton>
     </View>
   );
 };

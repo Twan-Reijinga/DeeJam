@@ -10,7 +10,6 @@ import globalStyles from "../config/globalStyles";
 import colors from "../config/colors";
 
 interface TextButtonProps {
-  content: string;
   borderRadius: number;
 }
 
@@ -19,7 +18,7 @@ interface Styles {
   centerText: TextStyle;
 }
 
-const TextButton: FC<TextButtonProps> = ({ content, borderRadius }) => {
+const TextButton: FC<TextButtonProps> = ({ borderRadius, children }) => {
   return (
     <Pressable
       style={[styles.buttonContainer, { borderRadius: borderRadius }]}
@@ -30,7 +29,7 @@ const TextButton: FC<TextButtonProps> = ({ content, borderRadius }) => {
         adjustsFontSizeToFit={true}
         numberOfLines={1}
       >
-        {content}
+        {children}
       </Text>
     </Pressable>
   );

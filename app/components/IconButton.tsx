@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { FC } from "react";
 
-interface ButtonProps {}
+interface IconButtonProps {}
 
 interface Styles {}
 
-const Button: FC<ButtonProps> = () => {
+const IconButton: FC<IconButtonProps> = () => {
   return (
     <View>
       <Text>Button</Text>
@@ -13,6 +13,6 @@ const Button: FC<ButtonProps> = () => {
   );
 };
 
-export default Button;
+export default IconButton;
 
 const styles = StyleSheet.create<Styles>({});
