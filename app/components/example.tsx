@@ -1,18 +1,18 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { FC } from "react";
 
-interface ButtonProps {}
+interface exampleProps {}
 
 interface Styles {}
 
-const Button: FC<ButtonProps> = () => {
+const example: FC<exampleProps> = () => {
   return (
     <View>
-      <Text>Button</Text>
+      <Text>example</Text>
     </View>
   );
 };
 
-export default Button;
+export default example;
 
 const styles = StyleSheet.create<Styles>({});

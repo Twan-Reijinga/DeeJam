@@ -13,6 +13,7 @@ import { responsiveWidth } from "react-native-responsive-dimensions";
 import globalStyles from "../config/globalStyles";
 import colors from "../config/colors";
 import fontSizes from "../config/fontSizes";
+import TextButton from "./TextButton";
 
 const borderRadius = responsiveWidth(5);
 
@@ -27,22 +28,7 @@ interface Styles {
   overlay: ViewStyle;
   textContainer: ViewStyle;
   centerText: TextStyle;
-  buttonContainer: ViewStyle;
 }
-
-const JoinButton: FC = () => {
-  return (
-    <Pressable style={styles.buttonContainer} onPress={() => alert("Pressed")}>
-      <Text
-        style={[globalStyles.subTitle, styles.centerText]}
-        adjustsFontSizeToFit={true}
-        numberOfLines={1}
-      >
-        Join
-      </Text>
-    </Pressable>
-  );
-};
 
 const GroupCard: FC<GroupCardProps> = ({ groupName, creatorName }) => {
   var [currentFont, setCurrentFont] =
@@ -79,7 +65,7 @@ const GroupCard: FC<GroupCardProps> = ({ groupName, creatorName }) => {
           {creatorName}
         </Text>
       </View>
-      <JoinButton />
+      <TextButton content="Join" borderRadius={borderRadius} />
     </View>
   );
 };
@@ -88,6 +74,7 @@ export default GroupCard;
 
 const styles = StyleSheet.create<Styles>({
   container: {
+    marginTop: "2.5%",
     width: "50%",
     maxWidth: 500,
     aspectRatio: 1,
@@ -109,9 +96,5 @@ const styles = StyleSheet.create<Styles>({
   },
   centerText: {
     textAlign: "center",
-  },
-  buttonContainer: {
-    backgroundColor: colors.secondary,
-    borderRadius: borderRadius,
   },
 });
