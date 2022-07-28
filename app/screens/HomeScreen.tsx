@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { FC } from "react";
 import globalStyles from "../config/globalStyles";
-import GroupCard from "../components/GroupCard";
+import Card from "../components/Card";
 
 interface HomeScreenProps {
   user: string;
@@ -14,7 +14,7 @@ const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
       <Text style={[globalStyles.subTitle, styles.margin]}>
         Listen with friends
       </Text>
-      <GroupCard groupName="Vuurtoren Eiland" creatorName="Twan"></GroupCard>
+      <Card title="Vuurtoren Eiland" subtitle="Twan" />
     </View>
   );
 };

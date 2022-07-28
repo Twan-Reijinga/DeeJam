@@ -29,6 +29,6 @@ export default StyleSheet.create({
     fontFamily: "Roboto_400Regular",
     fontSize: fontSizes.small,
     color: colors.textColor,
-    opacity: 0.8,
+    opacity: 0.5,
   },
 });

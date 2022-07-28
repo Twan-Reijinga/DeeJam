@@ -18,9 +18,9 @@ import IconButton from "./IconButton";
 
 const borderRadius = responsiveWidth(5) < 50 ? responsiveWidth(5) : 50;
 
-interface GroupCardProps {
-  groupName: string;
-  creatorName: string;
+interface CardProps {
+  title: string;
+  subtitle: string;
 }
 
 interface Styles {
@@ -30,11 +30,12 @@ interface Styles {
   textContainer: ViewStyle;
   centerText: TextStyle;
   textButton: TextStyle;
+  iconButton: ViewStyle;
 }
 
-const GroupCard: FC<GroupCardProps> = ({ groupName, creatorName }) => {
+const Card: FC<CardProps> = ({ title, subtitle }) => {
   var [currentFont, setCurrentFont] =
-    Platform.OS === "web" ? [fontSizes.small, undefined] : useState(80);
+    Platform.OS === "web" ? [fontSizes.medium, undefined] : useState(20);
 
   return (
     <View style={styles.container}>
@@ -61,11 +62,9 @@ const GroupCard: FC<GroupCardProps> = ({ groupName, creatorName }) => {
             }
           }}
         >
-          {groupName}
+          {title}
         </Text>
-        <Text style={[globalStyles.name, styles.centerText]}>
-          {creatorName}
-        </Text>
+        <Text style={[globalStyles.name, styles.centerText]}>{subtitle}</Text>
       </View>
       <TextButton
         style={[styles.centerText, styles.textButton]}
@@ -73,18 +72,24 @@ const GroupCard: FC<GroupCardProps> = ({ groupName, creatorName }) => {
       >
         Join
       </TextButton>
-      {/* <IconButton></IconButton> */}
+      <IconButton
+        style={styles.iconButton}
+        size={borderRadius * 2}
+        source={require("../assets/playButton.png")}
+        backgroundColor={colors.textColor}
+        color={colors.secondary}
+      />
     </View>
   );
 };
 
-export default GroupCard;
+export default Card;
 
 const styles = StyleSheet.create<Styles>({
   container: {
     marginTop: "2.5%",
     width: "50%",
-    maxWidth: 500,
+    maxWidth: 400,
     aspectRatio: 1,
     backgroundColor: colors.secondary,
     borderRadius: borderRadius,
@@ -108,5 +113,10 @@ const styles = StyleSheet.create<Styles>({
   },
   textButton: {
     fontSize: fontSizes.small,
+  },
+  iconButton: {
+    position: "absolute",
+    marginTop: -borderRadius * 2,
+    right: 0,
   },
 });
