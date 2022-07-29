@@ -6,7 +6,7 @@ import {
   View,
   ViewStyle,
   TextStyle,
-  Pressable,
+  ImageSourcePropType,
 } from "react-native";
 import React, { FC, useState } from "react";
 import { responsiveWidth } from "react-native-responsive-dimensions";
@@ -21,6 +21,9 @@ const borderRadius = responsiveWidth(5) < 50 ? responsiveWidth(5) : 50;
 interface CardProps {
   title: string;
   subtitle: string;
+  size: number;
+  source: ImageSourcePropType;
+  style?: ViewStyle;
 }
 
 interface Styles {
@@ -33,14 +36,14 @@ interface Styles {
   iconButton: ViewStyle;
 }
 
-const Card: FC<CardProps> = ({ title, subtitle }) => {
+const Card: FC<CardProps> = ({ title, subtitle, size, source, style }) => {
   var [currentFont, setCurrentFont] =
     Platform.OS === "web" ? [fontSizes.medium, undefined] : useState(20);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style, { width: size }]}>
       <ImageBackground
-        source={require("../assets/vuurtoren.jpg")}
+        source={source}
         resizeMode="cover"
         style={[StyleSheet.absoluteFillObject, styles.backgroundImage]}
       >
@@ -87,8 +90,7 @@ export default Card;
 
 const styles = StyleSheet.create<Styles>({
   container: {
-    marginTop: "2.5%",
-    width: "50%",
+    // width: cardWidth,
     maxWidth: 400,
     aspectRatio: 1,
     backgroundColor: colors.secondary,
