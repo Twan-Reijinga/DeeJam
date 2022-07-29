@@ -1,4 +1,11 @@
-import { StyleSheet, Text, TextStyle, View, ViewStyle } from "react-native";
+import {
+  ImageSourcePropType,
+  StyleSheet,
+  Text,
+  TextStyle,
+  View,
+  ViewStyle,
+} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import React, { FC } from "react";
 import globalStyles from "../config/globalStyles";
@@ -15,7 +22,41 @@ interface Styles {
   card: ViewStyle;
 }
 
+interface cardInfo {
+  title: string;
+  subtitle: string;
+  source: ImageSourcePropType;
+}
+
 const cardSize = responsiveWidth(40);
+
+const cardInfo: Array<cardInfo> = [
+  {
+    title: "Vuurtoren Eiland",
+    subtitle: "Twan",
+    source: require("../assets/vuurtoren.jpg"),
+  },
+  {
+    title: "Vrienden Groep",
+    subtitle: "VriendNaam",
+    source: require("../assets/dessert.png"),
+  },
+  {
+    title: "Vakantie Groep",
+    subtitle: "Sinterklaas",
+    source: require("../assets/mountains.jpg"),
+  },
+  {
+    title: "Lofi Beats",
+    subtitle: "Username",
+    source: require("../assets/dessert.png"),
+  },
+  {
+    title: "Your GroupName",
+    subtitle: "Name of Host",
+    source: require("../assets/vuurtoren.jpg"),
+  },
+];
 
 const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
   return (
@@ -25,48 +66,17 @@ const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
         Listen with friends
       </Text>
       <ScrollView horizontal contentContainerStyle={styles.scroll}>
-        <Card
-          title="Vuurtoren Eiland"
-          subtitle="Twan"
-          size={cardSize}
-          source={require("../assets/vuurtoren.jpg")}
-          style={styles.card}
-        />
-        <Card
-          title="Vrienden Group"
-          subtitle="FriendName"
-          size={cardSize}
-          source={require("../assets/dessert.png")}
-          style={styles.card}
-        />
-        <Card
-          title="Vakantie Groep"
-          subtitle="Sinterklaas"
-          size={cardSize}
-          source={require("../assets/mountains.jpg")}
-          style={styles.card}
-        />
-        <Card
-          title="Lofi Beats"
-          subtitle="Someone"
-          size={cardSize}
-          source={require("../assets/vuurtoren.jpg")}
-          style={styles.card}
-        />
-        <Card
-          title="Relax/Chill"
-          subtitle="Twan"
-          size={cardSize}
-          source={require("../assets/dessert.png")}
-          style={styles.card}
-        />
-        <Card
-          title="Title"
-          subtitle="Insert name here"
-          size={cardSize}
-          source={require("../assets/mountains.jpg")}
-          style={styles.card}
-        />
+        {cardInfo.map((info) => {
+          return (
+            <Card
+              title={info.title}
+              subtitle={info.subtitle}
+              size={cardSize}
+              source={info.source}
+              style={styles.card}
+            />
+          );
+        })}
       </ScrollView>
     </View>
   );
