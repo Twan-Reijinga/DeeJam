@@ -11,6 +11,7 @@ import React, { FC } from "react";
 import globalStyles from "../config/globalStyles";
 import Card from "../components/Card";
 import { responsiveWidth } from "react-native-responsive-dimensions";
+import TrackListItem from "../components/TrackListItem";
 
 interface HomeScreenProps {
   user: string;
@@ -66,9 +67,10 @@ const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
         Listen with friends
       </Text>
       <ScrollView horizontal contentContainerStyle={styles.scroll}>
-        {cardInfo.map((info) => {
+        {cardInfo.map((info, index) => {
           return (
             <Card
+              key={index}
               title={info.title}
               subtitle={info.subtitle}
               size={cardSize}
@@ -78,6 +80,14 @@ const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
           );
         })}
       </ScrollView>
+      <Text style={[globalStyles.subTitle, styles.topSpace]}>
+        Your Favorite songs
+      </Text>
+      <TrackListItem
+        title="On Top Of The World"
+        artist="Imagine Dragons"
+        source={require("../assets/dessert.png")}
+      />
     </View>
   );
 };

@@ -4,5 +4,5 @@ export default {
   big: responsiveFontSize(4),
   medium: responsiveFontSize(3),
   small: responsiveFontSize(2),
-  verySmall: responsiveFontSize(1),
+  verySmall: responsiveFontSize(1.5),
 };
