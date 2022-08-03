@@ -1,5 +1,6 @@
 import {
   ImageSourcePropType,
+  Platform,
   StyleSheet,
   Text,
   TextStyle,
@@ -10,7 +11,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import React, { FC } from "react";
 import globalStyles from "../config/globalStyles";
 import Card from "../components/Card";
-import { responsiveWidth } from "react-native-responsive-dimensions";
+import { responsiveHeight, responsiveWidth } from "react-native-responsive-dimensions";
 import TrackListItem from "../components/TrackListItem";
 
 interface HomeScreenProps {
@@ -18,10 +19,12 @@ interface HomeScreenProps {
 }
 
 interface Styles {
+  container: ViewStyle;
   topSpace: TextStyle;
-  scrollContainer: ViewStyle;
-  scroll: ViewStyle;
+  cardScrollContainer: ViewStyle;
+  cardScroll: ViewStyle;
   card: ViewStyle;
+  trackScrollContainer: ViewStyle;
   track: ViewStyle;
 }
 
@@ -88,17 +91,37 @@ const tracks: Array<trackProps> = [
     artist: "TheFatRat",
     imageSource: require("../assets/dessert.png"),
   },
+  {
+    title: "On Top Of The World",
+    artist: "Imagine Dragons",
+    imageSource: require("../assets/dessert.png"),
+  },
+  {
+    title: "More Than You Know",
+    artist: "Axwell / ingrosso",
+    imageSource: require("../assets/vuurtoren.jpg"),
+  },
+  {
+    title: "Warriors",
+    artist: "Imagine Dragons",
+    imageSource: require("../assets/mountains.jpg"),
+  },
+  {
+    title: "FlyAway",
+    artist: "TheFatRat",
+    imageSource: require("../assets/dessert.png"),
+  },
 ];
 
 const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={globalStyles.title}>Hey {user}</Text>
       <Text style={[globalStyles.subTitle, styles.topSpace]}>
         Listen with friends
       </Text>
-      <View style={styles.scrollContainer}>
-        <ScrollView horizontal contentContainerStyle={styles.scroll}>
+      <View style={styles.cardScrollContainer}>
+        <ScrollView horizontal contentContainerStyle={styles.cardScroll}>
           {cards.map((card, index) => {
             return (
               <Card
@@ -116,17 +139,21 @@ const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
       <Text style={[globalStyles.subTitle, styles.topSpace]}>
         Your Favorite songs
       </Text>
-      {tracks.map((track, index) => {
-        return (
-          <TrackListItem
-            key={index}
-            title={track.title}
-            artist={track.artist}
-            source={track.imageSource}
-            style={styles.track}
-          />
-        );
-      })}
+      <View style={styles.trackScrollContainer}>
+        <ScrollView>
+          {tracks.map((track, index) => {
+            return (
+              <TrackListItem
+                key={index}
+                title={track.title}
+                artist={track.artist}
+                source={track.imageSource}
+                style={styles.track}
+              />
+            );
+          })}
+        </ScrollView>
+      </View>
     </View>
   );
 };
@@ -134,20 +161,28 @@ const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create<Styles>({
+  container: {
+    flex: 1,
+  },
   topSpace: {
     marginTop: "5%",
   },
-  scrollContainer: {
+  cardScrollContainer: {
     width: "105%",
     left: 0,
     right: responsiveWidth(-5),
   },
-  scroll: {
+  cardScroll: {
     flexDirection: "row",
   },
   card: {
     marginRight: cardSize / 20,
     marginVertical: cardSize / 20,
+  },
+  trackScrollContainer: {
+    flex: 1,
+    height: 1000,
+    backgroundColor: 'red',
   },
   track: {
     marginTop: "3%",
