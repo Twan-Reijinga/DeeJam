@@ -19,43 +19,74 @@ interface HomeScreenProps {
 
 interface Styles {
   topSpace: TextStyle;
+  scrollContainer: ViewStyle;
   scroll: ViewStyle;
   card: ViewStyle;
+  track: ViewStyle;
 }
 
-interface cardInfo {
+interface cardProps {
   title: string;
   subtitle: string;
-  source: ImageSourcePropType;
+  imageSource: ImageSourcePropType;
+}
+
+interface trackProps {
+  title: string;
+  artist: string;
+  imageSource: ImageSourcePropType;
 }
 
 const cardSize = responsiveWidth(40);
 
-const cardInfo: Array<cardInfo> = [
+const cards: Array<cardProps> = [
   {
     title: "Vuurtoren Eiland",
     subtitle: "Twan",
-    source: require("../assets/vuurtoren.jpg"),
+    imageSource: require("../assets/vuurtoren.jpg"),
   },
   {
     title: "Vrienden Groep",
     subtitle: "VriendNaam",
-    source: require("../assets/dessert.png"),
+    imageSource: require("../assets/dessert.png"),
   },
   {
     title: "Vakantie Groep",
     subtitle: "Sinterklaas",
-    source: require("../assets/mountains.jpg"),
+    imageSource: require("../assets/mountains.jpg"),
   },
   {
     title: "Lofi Beats",
     subtitle: "Username",
-    source: require("../assets/dessert.png"),
+    imageSource: require("../assets/dessert.png"),
   },
   {
     title: "Your GroupName",
     subtitle: "Name of Host",
-    source: require("../assets/vuurtoren.jpg"),
+    imageSource: require("../assets/vuurtoren.jpg"),
+  },
+];
+
+const tracks: Array<trackProps> = [
+  {
+    title: "On Top Of The World",
+    artist: "Imagine Dragons",
+    imageSource: require("../assets/dessert.png"),
+  },
+  {
+    title: "More Than You Know",
+    artist: "Axwell / ingrosso",
+    imageSource: require("../assets/vuurtoren.jpg"),
+  },
+  {
+    title: "Warriors",
+    artist: "Imagine Dragons",
+    imageSource: require("../assets/mountains.jpg"),
+  },
+  {
+    title: "FlyAway",
+    artist: "TheFatRat",
+    imageSource: require("../assets/dessert.png"),
   },
 ];
 
@@ -66,28 +97,36 @@ const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
       <Text style={[globalStyles.subTitle, styles.topSpace]}>
         Listen with friends
       </Text>
-      <ScrollView horizontal contentContainerStyle={styles.scroll}>
-        {cardInfo.map((info, index) => {
-          return (
-            <Card
-              key={index}
-              title={info.title}
-              subtitle={info.subtitle}
-              size={cardSize}
-              source={info.source}
-              style={styles.card}
-            />
-          );
-        })}
-      </ScrollView>
+      <View style={styles.scrollContainer}>
+        <ScrollView horizontal contentContainerStyle={styles.scroll}>
+          {cards.map((card, index) => {
+            return (
+              <Card
+                key={index}
+                title={card.title}
+                subtitle={card.subtitle}
+                size={cardSize}
+                source={card.imageSource}
+                style={styles.card}
+              />
+            );
+          })}
+        </ScrollView>
+      </View>
       <Text style={[globalStyles.subTitle, styles.topSpace]}>
         Your Favorite songs
       </Text>
-      <TrackListItem
-        title="On Top Of The World"
-        artist="Imagine Dragons"
-        source={require("../assets/dessert.png")}
-      />
+      {tracks.map((track, index) => {
+        return (
+          <TrackListItem
+            key={index}
+            title={track.title}
+            artist={track.artist}
+            source={track.imageSource}
+            style={styles.track}
+          />
+        );
+      })}
     </View>
   );
 };
@@ -98,11 +137,20 @@ const styles = StyleSheet.create<Styles>({
   topSpace: {
     marginTop: "5%",
   },
+  scrollContainer: {
+    width: "105%",
+    left: 0,
+    right: responsiveWidth(-5),
+  },
   scroll: {
     flexDirection: "row",
   },
   card: {
     marginRight: cardSize / 20,
     marginVertical: cardSize / 20,
+  },
+  track: {
+    marginTop: "3%",
+    width: "100%",
   },
 });

@@ -12,23 +12,34 @@ import { responsiveWidth } from "react-native-responsive-dimensions";
 import globalStyles from "../config/globalStyles";
 import fontSizes from "../config/fontSizes";
 import { Image } from "react-native-svg";
+import TrackImage from "./TrackImage";
 
 interface TrackListItemProps {
   title: string;
   artist: string;
   source: ImageSourcePropType;
+  style?: ViewStyle;
 }
 
 interface Styles {
   container: ViewStyle;
-  imageContainer: ViewStyle;
-  image: ImageStyle;
   textContainer: ViewStyle;
+  spaceRight: ViewStyle;
 }
 
-const TrackListItem: FC<TrackListItemProps> = ({ title, artist, source }) => {
+const TrackListItem: FC<TrackListItemProps> = ({
+  title,
+  artist,
+  source,
+  style,
+}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
+      <TrackImage
+        source={source}
+        size={responsiveWidth(10)}
+        style={styles.spaceRight}
+      />
       <View style={styles.textContainer}>
         <Text style={[globalStyles.subTitle, { fontSize: fontSizes.small }]}>
           {title}
@@ -54,11 +65,10 @@ const styles = StyleSheet.create<Styles>({
     alignItems: "center",
     justifyContent: "center",
   },
-  imageContainer: {},
-  image: {
-    resizeMode: "contain",
-  },
   textContainer: {
     flex: 1,
+  },
+  spaceRight: {
+    marginRight: responsiveWidth(3),
   },
 });
