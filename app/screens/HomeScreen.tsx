@@ -182,7 +182,6 @@ const styles = StyleSheet.create<Styles>({
   trackScrollContainer: {
     flex: 1,
     height: 1000,
-    backgroundColor: 'red',
   },
   track: {
     marginTop: "3%",

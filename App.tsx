@@ -13,6 +13,7 @@ import {
 import globalStyles from "./app/config/globalStyles";
 import colors from "./app/config/colors";
 import HomeScreen from "./app/screens/HomeScreen";
+import SafeArea from "./app/components/SafeArea";
 
 export default function App() {
   const [ralewayLoaded] = useRaleway({
@@ -29,9 +30,9 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={globalStyles.SaveArea}>
+    <SafeArea>
       <HomeScreen user="Twan" />
-    </SafeAreaView>
+    </SafeArea>
   );
 }
 
