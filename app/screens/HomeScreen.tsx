@@ -11,13 +11,18 @@ import { ScrollView } from "react-native-gesture-handler";
 import React, { FC } from "react";
 import globalStyles from "../config/globalStyles";
 import Card from "../components/Card";
-import { responsiveHeight, responsiveWidth } from "react-native-responsive-dimensions";
+import {
+  responsiveHeight,
+  responsiveWidth,
+} from "react-native-responsive-dimensions";
 import TrackListItem from "../components/TrackListItem";
+import colors from "../config/colors";
+import IconButton from "../components/IconButton";
+import Greeting from "../components/Greeting";
 
 interface HomeScreenProps {
   user: string;
 }
-
 interface Styles {
   container: ViewStyle;
   topSpace: TextStyle;
@@ -27,20 +32,16 @@ interface Styles {
   trackScrollContainer: ViewStyle;
   track: ViewStyle;
 }
-
 interface cardProps {
   title: string;
   subtitle: string;
   imageSource: ImageSourcePropType;
 }
-
 interface trackProps {
   title: string;
   artist: string;
   imageSource: ImageSourcePropType;
 }
-
-const cardSize = responsiveWidth(40);
 
 const cards: Array<cardProps> = [
   {
@@ -69,7 +70,6 @@ const cards: Array<cardProps> = [
     imageSource: require("../assets/vuurtoren.jpg"),
   },
 ];
-
 const tracks: Array<trackProps> = [
   {
     title: "On Top Of The World",
@@ -112,11 +112,21 @@ const tracks: Array<trackProps> = [
     imageSource: require("../assets/dessert.png"),
   },
 ];
+const cardSize = responsiveWidth(40);
+const buttonSize = responsiveWidth(10) < 80 ? responsiveWidth(10) : 80;
 
 const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
   return (
     <View style={styles.container}>
-      <Text style={globalStyles.title}>Hey {user}</Text>
+      <View>
+        <Greeting name="Twan" />
+        {/* <IconButton
+          source={require("../assets/icons/star.png")}
+          size={buttonSize}
+          color={colors.textColor}
+          backgroundColor={colors.textColorWith10Opacity}
+        /> */}
+      </View>
       <Text style={[globalStyles.subTitle, styles.topSpace]}>
         Listen with friends
       </Text>
@@ -184,7 +194,7 @@ const styles = StyleSheet.create<Styles>({
     height: 1000,
   },
   track: {
-    marginTop: "3%",
+    marginTop: responsiveHeight(0.5),
     width: "100%",
   },
 });

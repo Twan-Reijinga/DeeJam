@@ -27,6 +27,8 @@ interface Styles {
   spaceRight: ViewStyle;
 }
 
+const buttonSize = responsiveWidth(10) < 80 ? responsiveWidth(10) : 80;
+
 const TrackListItem: FC<TrackListItemProps> = ({
   title,
   artist,
@@ -50,14 +52,14 @@ const TrackListItem: FC<TrackListItemProps> = ({
       </View>
       <IconButton
         source={require("../assets/icons/play.png")}
-        size={responsiveWidth(10)}
+        size={buttonSize}
         color={colors.textColor}
         backgroundColor={colors.textColorWith10Opacity}
         style={styles.spaceRight}
       />
       <IconButton
         source={require("../assets/icons/star.png")}
-        size={responsiveWidth(10)}
+        size={buttonSize}
         color={colors.star}
         backgroundColor={colors.textColorWith10Opacity}
       />
@@ -72,8 +74,8 @@ const styles = StyleSheet.create<Styles>({
     backgroundColor: colors.secondary,
     aspectRatio: 6,
     maxHeight: 100,
-    padding: responsiveWidth(3),
-    borderRadius: responsiveWidth(3),
+    padding: buttonSize / 3,
+    borderRadius: buttonSize / 3,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",

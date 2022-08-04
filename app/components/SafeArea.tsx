@@ -1,4 +1,12 @@
-import { Dimensions, Platform, SafeAreaView, StatusBar, StyleSheet, View, ViewStyle } from "react-native";
+import {
+  Dimensions,
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from "react-native";
 import React, { FC } from "react";
 import colors from "../config/colors";
 
@@ -7,18 +15,20 @@ interface SafeAreaProps {
 }
 
 interface Styles {
+  webView: ViewStyle;
   safeAreaView: ViewStyle;
   view: ViewStyle;
 }
 
 const { height } = Dimensions.get("window");
 
-const SafeArea: FC<SafeAreaProps> = ({children}) => {
+const SafeArea: FC<SafeAreaProps> = ({ children }) => {
+  if (Platform.OS === "web") {
+    return <View style={styles.webView}>{children}</View>;
+  }
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <View style={styles.view}>
-        {children}
-      </View>
+      <View style={styles.view}>{children}</View>
     </SafeAreaView>
   );
 };
@@ -26,8 +36,12 @@ const SafeArea: FC<SafeAreaProps> = ({children}) => {
 export default SafeArea;
 
 const styles = StyleSheet.create<Styles>({
+  webView: {
+    backgroundColor: colors.primary,
+    padding: "5%",
+  },
   safeAreaView: {
-    ...StyleSheet.absoluteFillObject, 
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: colors.primary,
   },
   view: {
@@ -39,5 +53,5 @@ const styles = StyleSheet.create<Styles>({
     paddingLeft: "5%",
     paddingBottom: "5%",
     paddingRight: "5%",
-  }
+  },
 });

@@ -37,13 +37,13 @@ const IconButton: FC<IconButtonProps> = ({
       <View
         style={[
           styles.iconContainer,
-          style,
           {
             width: size,
             padding: size / 3,
             borderRadius: size / 2,
             backgroundColor: backgroundColor,
           },
+          style,
         ]}
       >
         <Image style={[styles.icon, { tintColor: color }]} source={source} />
