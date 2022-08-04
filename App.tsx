@@ -35,11 +35,3 @@ export default function App() {
     </SafeArea>
   );
 }
-
-// const styles = StyleSheet.create({
-//   AndroidSaveArea: {
-//     flex: 1,
-//     backgroundColor: colors.primary,
-//     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-//   },
-// });

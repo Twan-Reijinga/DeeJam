@@ -36,7 +36,9 @@ export default Greeting;
 
 const styles = StyleSheet.create<Styles>({
   container: {
+    flex: 1,
     flexDirection: "row",
+    marginRight: responsiveHeight(5),
   },
   editButton: {
     padding: responsiveWidth(1),

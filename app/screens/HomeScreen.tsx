@@ -19,12 +19,14 @@ import TrackListItem from "../components/TrackListItem";
 import colors from "../config/colors";
 import IconButton from "../components/IconButton";
 import Greeting from "../components/Greeting";
+import IconMenu from "../components/IconMenu";
 
 interface HomeScreenProps {
   user: string;
 }
 interface Styles {
   container: ViewStyle;
+  headContainer: ViewStyle;
   topSpace: TextStyle;
   cardScrollContainer: ViewStyle;
   cardScroll: ViewStyle;
@@ -118,14 +120,9 @@ const buttonSize = responsiveWidth(10) < 80 ? responsiveWidth(10) : 80;
 const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
   return (
     <View style={styles.container}>
-      <View>
-        <Greeting name="Twan" />
-        {/* <IconButton
-          source={require("../assets/icons/star.png")}
-          size={buttonSize}
-          color={colors.textColor}
-          backgroundColor={colors.textColorWith10Opacity}
-        /> */}
+      <View style={styles.headContainer}>
+        <Greeting name={user} />
+        <IconMenu buttonSize={buttonSize} />
       </View>
       <Text style={[globalStyles.subTitle, styles.topSpace]}>
         Listen with friends
@@ -173,6 +170,10 @@ export default HomeScreen;
 const styles = StyleSheet.create<Styles>({
   container: {
     flex: 1,
+  },
+  headContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   topSpace: {
     marginTop: "5%",
