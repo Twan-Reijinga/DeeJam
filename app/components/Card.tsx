@@ -16,8 +16,6 @@ import fontSizes from "../config/fontSizes";
 import TextButton from "./TextButton";
 import IconButton from "./IconButton";
 
-const borderRadius = responsiveWidth(5) < 50 ? responsiveWidth(5) : 50;
-
 interface CardProps {
   title: string;
   subtitle: string;
@@ -35,6 +33,8 @@ interface Styles {
   textButton: TextStyle;
   iconButton: ViewStyle;
 }
+
+const borderRadius = responsiveWidth(5) < 50 ? responsiveWidth(5) : 50;
 
 const Card: FC<CardProps> = ({ title, subtitle, size, source, style }) => {
   var [currentFont, setCurrentFont] =
@@ -90,7 +90,6 @@ export default Card;
 
 const styles = StyleSheet.create<Styles>({
   container: {
-    // width: cardWidth,
     maxWidth: 400,
     aspectRatio: 1,
     backgroundColor: colors.secondary,

@@ -1,6 +1,5 @@
 import {
   ImageSourcePropType,
-  Platform,
   StyleSheet,
   Text,
   TextStyle,
@@ -16,10 +15,9 @@ import {
   responsiveWidth,
 } from "react-native-responsive-dimensions";
 import TrackListItem from "../components/TrackListItem";
-import colors from "../config/colors";
-import IconButton from "../components/IconButton";
 import Greeting from "../components/Greeting";
 import IconMenu from "../components/IconMenu";
+import AddCard from "../components/AddCard";
 
 interface HomeScreenProps {
   user: string;
@@ -129,6 +127,7 @@ const HomeScreen: FC<HomeScreenProps> = ({ user }) => {
       </Text>
       <View style={styles.cardScrollContainer}>
         <ScrollView horizontal contentContainerStyle={styles.cardScroll}>
+          <AddCard size={cardSize} style={styles.card} />
           {cards.map((card, index) => {
             return (
               <Card

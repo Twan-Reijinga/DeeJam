@@ -10,10 +10,6 @@ import {
 import React, { FC } from "react";
 import colors from "../config/colors";
 
-interface SafeAreaProps {
-  children: JSX.Element;
-}
-
 interface Styles {
   webView: ViewStyle;
   safeAreaView: ViewStyle;
@@ -22,7 +18,7 @@ interface Styles {
 
 const { height } = Dimensions.get("window");
 
-const SafeArea: FC<SafeAreaProps> = ({ children }) => {
+const SafeArea: FC = ({ children }) => {
   if (Platform.OS === "web") {
     return <View style={styles.webView}>{children}</View>;
   }

@@ -54,14 +54,14 @@ const TrackListItem: FC<TrackListItemProps> = ({
         source={require("../assets/icons/play.png")}
         size={buttonSize}
         color={colors.textColor}
-        backgroundColor={colors.textColorWith10Opacity}
+        backgroundColor={colors.textColor + "1A"}
         style={styles.spaceRight}
       />
       <IconButton
         source={require("../assets/icons/star.png")}
         size={buttonSize}
         color={colors.star}
-        backgroundColor={colors.textColorWith10Opacity}
+        backgroundColor={colors.textColor + "1A"}
       />
     </View>
   );

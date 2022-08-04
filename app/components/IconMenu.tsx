@@ -20,14 +20,14 @@ const IconMenu: FC<IconMenuProps> = ({ buttonSize }) => {
         source={require("../assets/icons/glass.png")}
         size={buttonSize}
         color={colors.textColor}
-        backgroundColor={colors.textColorWith10Opacity}
+        backgroundColor={colors.textColor + "1A"}
         style={styles.rightSpace}
       />
       <IconButton
         source={require("../assets/icons/setting.png")}
         size={buttonSize}
         color={colors.textColor}
-        backgroundColor={colors.textColorWith10Opacity}
+        backgroundColor={colors.textColor + "1A"}
       />
     </View>
   );

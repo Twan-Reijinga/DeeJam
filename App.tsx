@@ -1,5 +1,3 @@
-import * as React from "react";
-import { SafeAreaView } from "react-native";
 import {
   useFonts as useRaleway,
   Raleway_700Bold,
@@ -10,8 +8,6 @@ import {
   useFonts as useRoboto,
   Roboto_400Regular,
 } from "@expo-google-fonts/roboto";
-import globalStyles from "./app/config/globalStyles";
-import colors from "./app/config/colors";
 import HomeScreen from "./app/screens/HomeScreen";
 import SafeArea from "./app/components/SafeArea";
 

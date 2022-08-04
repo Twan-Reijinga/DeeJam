@@ -25,7 +25,7 @@ const Greeting: FC<GreetingProps> = ({ name }) => {
         source={require("../assets/icons/edit.png")}
         size={responsiveWidth(5)}
         color={colors.textColor}
-        backgroundColor={colors.textColorWith10Opacity}
+        backgroundColor={colors.textColor + "1A"}
         style={styles.editButton}
       />
     </View>
