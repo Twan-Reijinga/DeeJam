@@ -11,8 +11,8 @@ import colors from "../config/colors";
 import { responsiveWidth } from "react-native-responsive-dimensions";
 import globalStyles from "../config/globalStyles";
 import fontSizes from "../config/fontSizes";
-import { Image } from "react-native-svg";
 import TrackImage from "./TrackImage";
+import IconButton from "./IconButton";
 
 interface TrackListItemProps {
   title: string;
@@ -48,6 +48,19 @@ const TrackListItem: FC<TrackListItemProps> = ({
           {artist}
         </Text>
       </View>
+      <IconButton
+        source={require("../assets/icons/play.png")}
+        size={responsiveWidth(10)}
+        color={colors.textColor}
+        backgroundColor={colors.textColorWith10Opacity}
+        style={styles.spaceRight}
+      />
+      <IconButton
+        source={require("../assets/icons/star.png")}
+        size={responsiveWidth(10)}
+        color={colors.star}
+        backgroundColor={colors.textColorWith10Opacity}
+      />
     </View>
   );
 };
@@ -69,6 +82,6 @@ const styles = StyleSheet.create<Styles>({
     flex: 1,
   },
   spaceRight: {
-    marginRight: responsiveWidth(3),
+    marginRight: responsiveWidth(2),
   },
 });

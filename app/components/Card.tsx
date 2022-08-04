@@ -78,7 +78,7 @@ const Card: FC<CardProps> = ({ title, subtitle, size, source, style }) => {
       <IconButton
         style={styles.iconButton}
         size={borderRadius * 2}
-        source={require("../assets/playButton.png")}
+        source={require("../assets/icons/play.png")}
         backgroundColor={colors.textColor}
         color={colors.secondary}
       />
